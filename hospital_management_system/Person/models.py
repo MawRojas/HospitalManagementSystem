@@ -1,4 +1,5 @@
 from django.db import models
+#from hospital.models import PatientRoom, SurgeryRoom
 from decimal import Decimal
 # Create your models here.
 
@@ -27,7 +28,7 @@ class Doctors(Employee):
 	#surgery=models.ForeignKey() #total number of surgeries for particular doctor
 
 #class Nurses(Employee):
-	rooms=models.ForeignKey(patient_room, on_delete=models.CASCADE) 		
+	#rooms=models.ForeignKey(patient_room, on_delete=models.CASCADE) 		
 class Patient(Persons):
 	symptoms=models.CharField(max_length=200, default='', blank=True)
 	allergies=models.CharField(max_length=200, default='', blank=True)
