@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-<<<<<<< HEAD
 
 class Persons(models.Model):
 	firstName=models.CharField(max_length=200)
@@ -31,5 +30,3 @@ class Patient(Persons):
 	currentMeds=models.CharField(max_length=200, default='', blank=True)
 	docName=models.ForeignKey(Doctors, on_delete=models.CASCADE, default='1')
 	
-=======
->>>>>>> master
