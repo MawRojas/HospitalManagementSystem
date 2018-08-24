@@ -1,5 +1,5 @@
 from django.db import models
-# from Person.models import Doctors, Nurses, Patient
+from Person.models import Doctors, Nurses, Patient
 # from app_five import Surgery, Equipment
 
 
@@ -13,8 +13,8 @@ class Room(models.Model):
 
 class PatientRoom(Room):
     price = models.DecimalField(default=0.0, decimal_places=2, max_digits=100)
-    # patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='patient')
-    # nurse = models.ForeignKey(Nurse, on_delete=models.CASCADE, related_name='nurse')
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='patient')
+    nurse = models.ForeignKey(Nurses, on_delete=models.CASCADE, related_name='nurse')
 
 
 class SurgeryRoom(Room):
@@ -30,7 +30,9 @@ class Hospital(models.Model):
     phone_number = models.CharField(max_length=10)
     patient_rooms = models.ManyToManyField(PatientRoom, symmetrical=False)
     surgery_rooms = models.ManyToManyField(SurgeryRoom, symmetrical=False)
-    # People = models.ManyToManyField(Persons, symmetrical=False)
+    patients = models.ManyToManyField(Patient, symmetrical=False)
+    doctors = models.ManyToManyField(Doctors, symmetrical=False)
+    nurses = models.ManyToManyField(Nurses, symmetrical=False)
 
     def save(self, *args, **kwargs):
         if Hospital.objects.count() == 1:
