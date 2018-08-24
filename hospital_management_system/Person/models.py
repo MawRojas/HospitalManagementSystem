@@ -24,14 +24,13 @@ class Employee(Persons):
 
 class Doctors(Employee):
 	specialty=models.CharField(max_length=200, default='', blank=True)
-	#patients=models.ForeignKey() #total number of patients for particular doctor
 	#surgery=models.ForeignKey() #total number of surgeries for particular doctor
 
 class Nurses(Employee):
-	rooms=models.ForeignKey(PatientRoom, on_delete=models.CASCADE, default='0') 		
+	patientrooms=models.ForeignKey(PatientRoom, on_delete=models.CASCADE, default='0') 		
 class Patient(Persons):
 	symptoms=models.CharField(max_length=200, default='', blank=True)
 	allergies=models.CharField(max_length=200, default='', blank=True)
 	currentMeds=models.CharField(max_length=200, default='', blank=True)
 	docName=models.ForeignKey(Doctors, on_delete=models.CASCADE, default='1')
-
+	
