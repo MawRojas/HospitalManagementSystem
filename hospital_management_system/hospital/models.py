@@ -1,6 +1,5 @@
 from django.db import models
-from django.db.models.signals import pre_save
-# from Person.models import Persons, Patient, Nurse
+# from Person.models import Doctors, Nurses, Patient
 # from app_five import Surgery, Equipment
 
 
@@ -33,8 +32,8 @@ class Hospital(models.Model):
     surgery_rooms = models.ManyToManyField(SurgeryRoom, symmetrical=False)
     # People = models.ManyToManyField(Persons, symmetrical=False)
 
-    def save(self, *args, **kwargs):
-        if Hospital.objects.count() == 1:
-            raise PermissionError("Only one Hospital is allowed")
-
-        super(Hospital, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if Hospital.objects.count() == 1:
+    #         raise PermissionError("Only one Hospital is allowed")
+    #
+    #     super(Hospital, self).save(*args, **kwargs)
