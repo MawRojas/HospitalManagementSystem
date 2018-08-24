@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Equipment Details</title>
+    </head>
+    <body>
+		{% for e in equip %}
+			<div>
+				<h1><a href="">{{ e.equip_name }}</a></h1>
+				<p>Price: {{e.equip_price}}</p>
+				<p>{{ e.equip_description|linebreaksbr }}</p>
+			</div>
+		{% endfor %}
+    </body>
+</html>
