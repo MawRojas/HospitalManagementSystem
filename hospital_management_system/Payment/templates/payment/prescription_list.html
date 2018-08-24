@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Prescription List</title>
+    </head>
+    <body>
+		{% for m in meds %}
+			<div>
+				<h1><a href="">{{ m.name }}</a></h1>
+				<p>Price: {{m.price}}</p>
+				<p>{{ m.description|linebreaksbr }}</p>
+			</div>
+		{% endfor %}
+    </body>
+</html>
