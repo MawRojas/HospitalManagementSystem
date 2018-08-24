@@ -8,6 +8,6 @@ urlpatterns = [
 	url(r'Patient', views.addPatients, name='person'),
 	url(r'Employee', views.addEmployee,name='person'),
 	url(r'Doctors', views.addDoctor,name='person'),
-	#url(r'Nurses', views.addNurse,name='Persons'),
+	url(r'Nurses', views.addNurse,name='Persons'),
 ]
 

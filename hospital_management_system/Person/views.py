@@ -10,5 +10,5 @@ def addEmployee(request):
 	addEmployees=Persons.objects.all()
 def addDoctor(request):
 	addDoctor=Employee.objects.all()
-#def addNurse(request):
-#	addNurse=Employee.objects.all()
+def addNurse(request):
+	addNurse=Employee.objects.all()
