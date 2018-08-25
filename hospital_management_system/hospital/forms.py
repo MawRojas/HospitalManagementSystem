@@ -18,3 +18,15 @@ class PostHospital(forms.ModelForm):
     class Meta:
         model = Hospital
         fields = ['name', 'address', 'phone_number']
+
+
+class UpdatePatientRoom(forms.ModelForm):
+    class Meta:
+        model = PatientRoom
+        fields = ['patient', 'nurse']
+
+
+class UpdateSurgeryRoom(forms.ModelForm):
+    class Meta:
+        model = SurgeryRoom
+        fields = ['surgery']
