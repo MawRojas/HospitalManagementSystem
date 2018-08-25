@@ -1,6 +1,8 @@
 from django.db import models
-
+from Person.models import Patient
+from Surgery_Details.models import Surgery
 # Create your models here.
+
 
 class Prescription(models.Model):
 	pres_name = models.CharField(max_length=200)
@@ -12,7 +14,7 @@ class Prescription(models.Model):
 
 		
 class Bill(Prescription):
-	# patient_id = models.ForeignKey('Patient.ID')
+	patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
 	total = models.IntegerField()
-	# surgery_id = models.ForeignKey('Surgery.surgery_id')
+	surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE)
 	# ##product = models.ForeignKey(Product, null =True, related_name='brands', on_delete=models.CASCADE)
