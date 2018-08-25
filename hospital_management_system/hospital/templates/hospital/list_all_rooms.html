@@ -2,6 +2,26 @@
 
 {% block content %}
     {% for sr in surgery_rooms %}
-        <div class="container_room"></div>
+        <h2 class="title_rooms">Surgery Rooms</h2>
+        <div class="container_room">
+            <p>Room Number: {{sr.room_number}}</p>
+            {% if not sr.is_occupied %}
+                <p>Room is empty</p>
+            {% else %}
+
+            {% endif %}
+        </div>
+    {% endfor %}
+    {% for room in patient_rooms %}
+        <h2 class="title_rooms">Patient Rooms</h2>
+        <div class="container_room">
+            <p>Room Number: {{room.room_number}}</p>
+            {% if not room.is_occupied %}
+                <p>Room is empty</p>
+            {% else %}
+                <p>Patient: {{ room.patient.name }}</p>
+                <p> Nurse: {{ room.nurse.name }}</p>
+            {% endif %}
+        </div>
     {% endfor %}
 {% endblock %}

@@ -9,9 +9,11 @@ def home(request):
 
 
 def rooms_list(request):
-    patient_rooms = Hospital.patient_rooms__set.all()
-    surgery_rooms = Hospital.surgery_rooms__set.all()
-    return redirect(request, 'hospital/list_all_rooms.html',
+    hospital = get_object_or_404(Hospital, id=1)
+    patient_rooms = hospital.patient_rooms.all()
+    surgery_rooms = hospital.surgery_rooms.all()
+    print(patient_rooms)
+    return render(request, 'hospital/list_all_rooms.html',
                     {'surgery_rooms': surgery_rooms, 'patient_rooms': patient_rooms})
 
 
@@ -28,13 +30,29 @@ def post_hospital(request):
 
 
 def post_patient_room(request):
+    hospital = get_object_or_404(Hospital, id=1)
     if request.method == 'POST':
         form = PostPatientRoom(request.POST)
         if form.is_valid():
             item = form.save(commit=False)
             item.save()
+            hospital.patient_rooms.add(item)
             return redirect('hospital:rooms')
     else:
         form = PostPatientRoom()
     return render(request, 'hospital\post_element.html', {'form': form, 'button_title': 'Post Patient Room'})
+
+
+def post_surgery_room(request):
+    hospital = get_object_or_404(Hospital, id=1)
+    if request.method == 'POST':
+        form = PostSurgeryRooom(request.POST)
+        if form.is_valid():
+            item = form.save(commit=False)
+            item.save()
+            hospital.surgery_rooms.add(item)
+            return redirect('hospital:rooms')
+    else:
+        form = PostSurgeryRooom()
+    return render(request, 'hospital\post_element.html', {'form': form, 'button_title': 'Post Surgery Room'})
 
