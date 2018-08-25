@@ -15,7 +15,7 @@ class Surgery(models.Model):
     # surgery_room = models.ForeignKey(SurgeryRoom, null=True, related_name = 'surgery', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.surgery_description
 
 
 class Equipment(models.Model):
