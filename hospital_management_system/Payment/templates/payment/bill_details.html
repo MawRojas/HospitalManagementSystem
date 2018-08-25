@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>Bill Details</title>
+    </head>
+    <body>
+		{% for b in bill %}
+			<div>
+				<h1><a href="">{{ b.total }}</a></h1>
+			</div>
+		{% endfor %}
+    </body>
+</html>

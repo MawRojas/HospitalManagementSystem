@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Surgery Details</title>
+    </head>
+    <body>
+		{% for s in sur %}
+			<div>
+				<h1><a href="">{{ s.duration }} mins</a></h1>
+				<p>Price: {{s.surgery_price}}</p>
+				<p>{{s.start_time}}
+				<p>{{ s.surgery_description|linebreaksbr }}</p>
+			</div>
+		{% endfor %}
+    </body>
+</html>
