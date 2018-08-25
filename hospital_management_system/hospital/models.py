@@ -1,6 +1,6 @@
 from django.db import models
 from Person.models import Doctors, Nurses, Patient
-# from app_five import Surgery, Equipment
+from Surgery_Details.models import Surgery, Equipment
 
 
 class Room(models.Model):
@@ -18,9 +18,8 @@ class PatientRoom(Room):
 
 
 class SurgeryRoom(Room):
-    # equipment = models.ManyToManyField(Equipment, symmetrical=False)
-    # surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE, related_name='surgery')
-    pass
+    equipment = models.ManyToManyField(Equipment, symmetrical=False)
+    surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE, related_name='surgery', null=True, default=0)
 
 
 # Create your models here.
