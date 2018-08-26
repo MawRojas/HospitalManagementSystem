@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Hospital, PatientRoom, SurgeryRoom
 from .forms import PostPatientRoom, PostHospital, PostSurgeryRooom, UpdatePatientRoom, UpdateSurgeryRoom
+from datetime import datetime
 
 
 # Create your views here.
@@ -98,6 +99,17 @@ def checkout_surgery_room(request, id):
     instance.surgery_id = None
     instance.save()
     return redirect('hospital:rooms')
+
+
+def display_surgery_schedule(request):
+    hospital = get_object_or_404(Hospital, id=1)
+    datetime_now = datetime.now()
+    surgery_rooms_booked = hospital.surgery_rooms.all().filter(is_occupied='1').order_by('surgery__start_time')
+    surgery_rooms_pending = hospital.surgery_rooms.all().filter(is_occupied='0').order_by('surgery__start_time')
+    return render(request, 'hospital\surgery_schedule.html', {'booked': surgery_rooms_booked,
+                                                              'pending': surgery_rooms_pending,
+                                                              'time': datetime_now})
+
 
 
 
