@@ -11,7 +11,6 @@ class addNurses(forms.ModelForm):
     class Meta:
         model=Nurses
         fields=['firstName', 'lastName','address','email','phoneNumber','SSN']
-        fields=['Shifts', 'Job Description', 'Salary']
 class addDoctors(forms.ModelForm):
     class Meta:
         model=Doctors
@@ -21,7 +20,7 @@ class UpdatePatientDetails:
     class Meta:
         model= Patient
         fields=['Symptoms','Allergies','Medications','Doctor Name']
-class UpdateDocctors:
+class UpdateDoctors:
     class Meta:
         model=Doctors
         fields=['Shifts', 'Job Description', 'Salary', 'Specialty']

@@ -2,6 +2,31 @@
 
 {% block content %}
     {% for sr in surgery_rooms %}
-        <div class="container_room"></div>
+        <h2 class="title_rooms">Surgery Rooms</h2>
+        <div class="container_room">
+            <p>Room Number: {{sr.room_number}}</p>
+            {% if not sr.is_occupied %}
+                <p>Room is empty</p>
+                <a href="{% url 'hospital:book_surgery' %}">Book Surgery</a>
+            {% else %}
+                <p>Doctor: {{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</p>
+                <p>Patient: {{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</p>
+                <a href="{% url 'hospital:check_out_surgery' sr.id %}">Check out surgery room</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+    {% for room in patient_rooms %}
+        <h2 class="title_rooms">Patient Rooms</h2>
+        <div class="container_room">
+            <p>Room Number: {{room.room_number}}</p>
+            {% if not room.is_occupied %}
+                <p>Room is empty</p>
+                <a href="{% url 'hospital:patient_check_in' room.id %}">Check patient in</a>
+            {% else %}
+                <p>Patient: {{room.patient.lastName}}, {{room.patient.firstName}}</p>
+                <p> Nurse: {{room.nurse.lastName}}, {{room.nurse.firstName}}</p>
+                <a href="{% url 'hospital:patient_check_out' room.id %}">Check out patient room</a>
+            {% endif %}
+        </div>
     {% endfor %}
 {% endblock %}

@@ -29,4 +29,4 @@ class UpdatePatientRoom(forms.ModelForm):
 class UpdateSurgeryRoom(forms.ModelForm):
     class Meta:
         model = SurgeryRoom
-        fields = ['surgery']    
+        fields = ['surgery']

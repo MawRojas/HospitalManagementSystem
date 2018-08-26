@@ -41,3 +41,4 @@ class Patient(Persons):
     allergies = models.CharField(max_length=200, default='', blank=True)
     currentMeds = models.CharField(max_length=200, default='', blank=True)
     docName = models.ForeignKey(Doctors, on_delete=models.CASCADE, default='1')
+

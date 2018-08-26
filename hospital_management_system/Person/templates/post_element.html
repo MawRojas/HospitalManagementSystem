@@ -1,0 +1,10 @@
+{% extends "hospital/base.html" %}
+
+{% block content %}
+    <h2 class="title_element">{{ button_title }}</h2>
+	<form method='post' class='add_item'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type='submit'>{{button_title}}</button>
+	</form>
+{% endblock %}

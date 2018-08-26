@@ -1,15 +1,34 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render
 from Person.models import Persons, Patient, Employee, Doctors
-from hospital.models import Hospital, PatientRoom, SurgeryRoom
 # Create your views here.
 
 def addPersons(request):
-    return render(request, 'templates/base.html')
+	addPerson=Persons.objects.all()
+
 def addPatients(request):
-	addPatient=Patient.objects.all()
+	instance=get_object_or_404(Patient)
+	form=UpdatePatientDetails(request.POST, instance=instance)
+	if form.is_valid():
+		item=form.save(commit=False)
+		item.is_occupied='1'
+		item.save()
+		return redirect('Person:Patient')
+
 def addEmployee(request):
 	addEmployees=Persons.objects.all()
-def addDoctor(request):
-	addDoctor=Employee.objects.all()
+def addDoctor(request):	
+	instance=get_object_or_404(Doctors)
+	form=UpdateDoctors(request.POST, instance=instance)
+	if form.is_valid():
+		item=form.save(commit=False)
+		item.is_occupied='1'
+		item.save()
+		return redirect('Employee:Doctor')
 def addNurse(request):
-	addNurse=Employee.objects.all()
+	instance=get_object_or_404(Nurses)
+	form=UpdateNurses(request.POST, instance=instance)
+	if form.is_valid():
+		item=form.save(commit=False)
+		item.is_occupied='1'
+		item.save()
+		return redirect('Employee:Doctor')

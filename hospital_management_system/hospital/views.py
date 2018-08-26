@@ -98,3 +98,6 @@ def checkout_surgery_room(request, id):
     instance.surgery_id = None
     instance.save()
     return redirect('hospital:rooms')
+
+
+
