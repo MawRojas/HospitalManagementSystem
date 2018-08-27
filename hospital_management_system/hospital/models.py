@@ -1,10 +1,10 @@
 from django.db import models
 from Person.models import Doctors, Nurses, Patient
-# from app_five import Surgery, Equipment
+from Surgery_Details.models import Surgery, Equipment
 
 
 class Room(models.Model):
-    room_number = models.BigIntegerField(default=0)
+    room_number = models.BigIntegerField(unique=True)
     is_occupied = models.BooleanField(default='0')
 
     class Meta:
@@ -13,14 +13,13 @@ class Room(models.Model):
 
 class PatientRoom(Room):
     price = models.DecimalField(default=0.0, decimal_places=2, max_digits=100)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='patient')
-    nurse = models.ForeignKey(Nurses, on_delete=models.CASCADE, related_name='nurse')
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='patient', null=True)
+    nurse = models.ForeignKey(Nurses, on_delete=models.CASCADE, related_name='nurse', null=True)
 
 
 class SurgeryRoom(Room):
-    # equipment = models.ManyToManyField(Equipment, symmetrical=False)
-    # surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE, related_name='surgery')
-    pass
+    equipment = models.ManyToManyField(Equipment, blank=True, null=True)
+    surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE, related_name='surgery', null=True)
 
 
 # Create your models here.
@@ -35,7 +34,7 @@ class Hospital(models.Model):
     nurses = models.ManyToManyField(Nurses, symmetrical=False)
 
     def save(self, *args, **kwargs):
-        if Hospital.objects.count() == 1:
+        if Hospital.objects.count() >= 1:
             raise PermissionError("Only one Hospital is allowed")
 
         super(Hospital, self).save(*args, **kwargs)

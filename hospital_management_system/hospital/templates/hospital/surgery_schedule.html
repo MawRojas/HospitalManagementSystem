@@ -1,0 +1,47 @@
+{% extends "hospital/base.html" %}
+
+{% block content %}
+    <div class="contianer_upcoming_surgeries">
+            <h2 class="title_surgery_schedule">Upcoming Surgeries</h2>
+            <table>
+                <tr>
+                    <th class="room_number_table_header">Room Number</th>
+                    <th class="patient_name_table_header">Doctor</th>
+                    <th>Patient</th>
+                    <th class="room_details_table_header">Details</th>
+                    <th class="surgery_details_status_header">Status</th>
+                </tr>
+            {% for sr in booked%}
+                <tr class="table_row_surgery">
+                    <td> {{ sr.room_number }}</td>
+                    <td>{{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</td>
+                    <td>{{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</td>
+                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Click for details</a> </td>
+                {% if sr.surgery.start_time >= time %}
+                    <td class="row_surgery_status_on_going">On Going</td>
+                {% else %}
+                    <td class="row_surgery_status_starting_soon">Starting Soon</td>
+                {% endif %}
+                </tr>
+            {% endfor %}
+            </table>
+    </div>
+
+    <div class="container_upcoming_surgeries">
+            <h2 class="title_surgery_schedule">Free Surgery Rooms</h2>
+            <table>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Details</th>
+                    <th>Book</th>
+                </tr>
+            {% for sr in free%}
+                <tr class="table_row_surgery">
+                    <td>{{sr.room_number}}</td>
+                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Details</a> </td>
+                    <td><a href="{% url 'hospital:book_surgery' sr.id %}">Book</a></td>
+                </tr>
+            {% endfor %}
+            </table>
+    </div>
+{% endblock %}

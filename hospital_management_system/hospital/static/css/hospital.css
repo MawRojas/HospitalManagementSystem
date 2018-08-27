@@ -1,0 +1,49 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.room_number_table_header, .check_inout_table_header, .room_details_table_header, .surgery_details_status_header {
+    width: 10%;
+}
+
+.table_row_not_available, .table_row_available {
+    width: 5%;
+}
+
+.table_row_available {
+    background-color: #42f468;
+}
+
+.table_row_not_available {
+    background-color: #aa1414;
+}
+
+.table_surgery_room:hover, .table_row_surgery:hover {
+    background-color: #79e2f2;
+}
+
+.patient_name_table_header {
+    width: 30%;
+}
+
+.row_surgery_status_on_going {
+    background-color: #1f5b04;
+    color: white;
+}
+
+.row_surgery_status_starting_soon {
+    background-color: #936405;
+    color: white;
+}

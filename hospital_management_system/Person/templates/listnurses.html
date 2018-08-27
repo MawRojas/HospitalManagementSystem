@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {%for dr in nurseList%} 
+        <h2 class="Nurse  List">Nurse List</h2>
+        <div class="container_nurse"> 
+            <p>Nurse {{dr.firstName}} {{dr.lastName}}</p>
+        </div>
+    {%endfor%}
+{% endblock %}
