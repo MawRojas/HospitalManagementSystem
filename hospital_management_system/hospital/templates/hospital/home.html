@@ -33,13 +33,21 @@
                 <h2 class="title_main_menu">Welcome to {{ hospital.name }}</h2>
                 <p>Select one option</p>
                 <ul>
-                    <li><a href="">Patients and visitors</a></li>
-                    <li><a href="">Our Doctors</a></li>
-                    <li><a href="{% url 'hospital:surgery_schedule' %}">Surgeries Schedule</a></li>
-                    <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
-                    <li><a href="{% url 'hospital:post_patient_room' %}">Create a Patient Room</a></li>
-                    <li><a href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></li>
-                    <li><a href="">Billing</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="">Patient Registration</a></li>
+                        <li><a href="">Our Staff</a></li>
+                        <li><a href="{% url 'hospital:surgery_schedule' %}">Surgeries Schedule</a></li>
+                        <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
+                        <li><a href="">Billing</a></li>
+                        <li><a href="{% url 'hospital:post_patient_room' %}">Create a Patient Room</a></li>
+                        <li><a href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></li>
+                    {% else %}
+                        <li><a href="">Patient Registration</a></li>
+                        <li><a href="">Our Staff</a></li>
+                        <li><a href="{% url 'hospital:surgery_schedule' %}">Surgeries Schedule</a></li>
+                        <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
+                        <li><a href="">Billing</a></li>
+                    {% endif %}
                 </ul>
             </div>
         {% else %}
