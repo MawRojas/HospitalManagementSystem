@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {%for pt in Patient %}
+        <h2 class="title_names">Patients</h2>
+        <div class="container_room">    
+            <p>Patient Name: {{pt.lastName}}, {{pt.firstName}}</p>
+            <p>Doctor Name: {{pt.docName}}</p>
+            <a href= "{% url 'Person:addPatients' pt.id%}">Update Patient Details</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
