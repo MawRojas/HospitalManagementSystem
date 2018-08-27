@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    {%for ns in Nurses%}
-    <h2 class="title_names">Nurses</h2>
-    <div class="container_room">
-        <p>Nurse Name:{{ns.lastName}}, {{ns.firstName}}</p>
-        <a href ="{% url 'Person: addNurse' dr.id%}">Update Nurse Details</a>
-    </div>
-    {% endfor %}
+    {%for dr in nurseList%} 
+        <h2 class="Nurse  List">Nurse List</h2>
+        <div class="container_nurse"> 
+            <p>Nurse {{dr.firstName}} {{dr.lastName}}</p>
+        </div>
+    {%endfor%}
 {% endblock %}
