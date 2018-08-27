@@ -6,7 +6,8 @@
         <div class="container_room">    
             <p>Patient Name: {{pt.lastName}}, {{pt.firstName}}</p>
             <p>Doctor Name: {{pt.docName}}</p>
-            <a href= "{% url 'Person:addPatients' pt.id%}">Update Patient Details</a>
+            <a href= "{% url 'Person:listPatients' pt.id%}">Update Patient Details</a>
+        
         </div>
     {% endfor %}
 
