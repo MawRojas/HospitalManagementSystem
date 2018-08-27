@@ -105,9 +105,9 @@ def display_surgery_schedule(request):
     hospital = get_object_or_404(Hospital, id=1)
     datetime_now = datetime.now()
     surgery_rooms_booked = hospital.surgery_rooms.all().filter(is_occupied='1').order_by('surgery__start_time')
-    surgery_rooms_pending = hospital.surgery_rooms.all().filter(is_occupied='0').order_by('surgery__start_time')
+    surgery_rooms_free = hospital.surgery_rooms.all().filter(is_occupied='0').order_by('surgery__start_time')
     return render(request, 'hospital\surgery_schedule.html', {'booked': surgery_rooms_booked,
-                                                              'pending': surgery_rooms_pending,
+                                                              'free': surgery_rooms_free,
                                                               'time': datetime_now})
 
 

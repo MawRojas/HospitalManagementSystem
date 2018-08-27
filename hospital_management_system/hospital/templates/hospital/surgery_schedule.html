@@ -28,21 +28,15 @@
     </div>
 
     <div class="container_upcoming_surgeries">
-            <h2 class="title_surgery_schedule">Surgeries Waiting for Room</h2>
+            <h2 class="title_surgery_schedule">Free Surgery Rooms</h2>
             <table>
                 <tr>
-                    <th>Doctor</th>
-                    <th>Patient</th>
                     <th>Room Number</th>
-                    <th>Status</th>
                     <th>Details</th>
                 </tr>
-            {% for sr in pending%}
+            {% for sr in free%}
                 <tr>
-                    <td>{{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</td>
-                    <td>{{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</td>
-                    <td> {{ sr.room_number }}</td>
-                    <td>Coming Next</td>
+                    <td>{{sr.room_number}}</td>
                     <td><a href="">Click for details</a> </td>
                 </tr>
             {% endfor %}
