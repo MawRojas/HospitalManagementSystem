@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^check_out/patient/(?P<id>\d+)$', views.check_patient_out_room, name='patient_check_out'),
     url(r'^book/surgery/$', views.book_surgery_room, name='book_surgery'),
     url(r'^check_out/surgery/(?P<id>\d+)$', views.checkout_surgery_room, name='check_out_surgery'),
+    url(r'^schedule/$', views.display_surgery_schedule, name='surgery_schedule'),
 ]
