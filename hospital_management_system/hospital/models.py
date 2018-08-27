@@ -20,7 +20,6 @@ class PatientRoom(Room):
 class SurgeryRoom(Room):
     equipment = models.ManyToManyField(Equipment, blank=True, null=True)
     surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE, related_name='surgery', null=True)
-    pass
 
 
 # Create your models here.

@@ -64,7 +64,6 @@ def post_surgery_room(request):
         if form.is_valid():
             item = form.save(commit=False)
             item.save()
-            form.save_m2m()
             hospital.surgery_rooms.add(item)
             return redirect('hospital:rooms')
     else:
