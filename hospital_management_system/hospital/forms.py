@@ -1,5 +1,6 @@
 from django import forms
 from .models import PatientRoom, SurgeryRoom, Hospital
+from Surgery_Details.models import Equipment
 
 
 class PostPatientRoom(forms.ModelForm):
@@ -11,7 +12,13 @@ class PostPatientRoom(forms.ModelForm):
 class PostSurgeryRooom(forms.ModelForm):
     class Meta:
         model = SurgeryRoom
-        fields = ['room_number']
+        exclude = ['is_occupied', 'surgery']
+
+    def __init__(self, *args, **kwargs):
+        super(PostSurgeryRooom, self).__init__(*args, **kwargs)
+        self.fields['equipment'].widget = forms.widgets.CheckboxSelectMultiple()
+        self.fields['equipment'].help_text = ""
+        self.fields['equipment'].queryset = Equipment.objects.all()
 
 
 class PostHospital(forms.ModelForm):

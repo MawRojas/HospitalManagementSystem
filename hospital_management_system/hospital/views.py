@@ -6,7 +6,10 @@ from datetime import datetime
 
 # Create your views here.
 def home(request):
-    hospital = Hospital.objects.filter(id=1)[0]
+    try:
+        hospital = Hospital.objects.filter(id=1)[0]
+    except IndexError:
+        hospital = None
     return render(request, 'hospital/home.html', {'hospital': hospital})
 
 
@@ -14,7 +17,6 @@ def rooms_list(request):
     hospital = get_object_or_404(Hospital, id=1)
     patient_rooms = hospital.patient_rooms.all()
     surgery_rooms = hospital.surgery_rooms.all()
-    print(patient_rooms)
     return render(request, 'hospital/list_all_rooms.html',
                   {'surgery_rooms': surgery_rooms, 'patient_rooms': patient_rooms})
 
@@ -62,6 +64,7 @@ def post_surgery_room(request):
         if form.is_valid():
             item = form.save(commit=False)
             item.save()
+            form.save_m2m()
             hospital.surgery_rooms.add(item)
             return redirect('hospital:rooms')
     else:
@@ -91,8 +94,8 @@ def check_patient_out_room(request, id):
     return redirect('hospital:rooms')
 
 
-def book_surgery_room(request):
-    instance = get_object_or_404(SurgeryRoom, is_occupied='0')
+def book_surgery_room(request, id):
+    instance = get_object_or_404(SurgeryRoom, id=id)
     form = UpdateSurgeryRoom(request.POST, instance=instance)
     if form.is_valid():
         item = form.save(commit=False)

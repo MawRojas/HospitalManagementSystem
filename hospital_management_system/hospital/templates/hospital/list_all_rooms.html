@@ -7,7 +7,7 @@
             <p>Room Number: {{sr.room_number}}</p>
             {% if not sr.is_occupied %}
                 <p>Room is empty</p>
-                <a href="{% url 'hospital:book_surgery' %}">Book Surgery</a>
+                <a href="{% url 'hospital:book_surgery' sr.id %}">Book Surgery</a>
             {% else %}
                 <p>Doctor: {{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</p>
                 <p>Patient: {{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</p>
