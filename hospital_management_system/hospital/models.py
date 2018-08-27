@@ -17,7 +17,7 @@ class PatientRoom(Room):
     nurse = models.ForeignKey(Nurses, on_delete=models.CASCADE, related_name='nurse', null=True)
 
 
-class SurgeryRoom(Room):
+class SurgeryRoom(Room):git
     equipment = models.ManyToManyField(Equipment, symmetrical=False)
     surgery = models.ForeignKey(Surgery, on_delete=models.CASCADE, related_name='surgery', null=True, default=0)
 

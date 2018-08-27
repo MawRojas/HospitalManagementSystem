@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from Person.models import Persons, Patient, Employee, Doctors
 from hospital.models import Hospital, PatientRoom, SurgeryRoom
 from .forms import addPatient, addNurses, addDoctors, UpdatePatientDetails, UpdateDoctors, UpdateNurses
@@ -8,7 +8,7 @@ def addPersons(request):
 	addPerson=Persons.objects.all()
 
 def listPatients(request):
-	patientList=Person.patientList.all()
+	patientList=Persons.patientList.all()
 	print(patientList)
 	return render(request, 'listpatients.html', {'patientList':patientList})
 
