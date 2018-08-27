@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from Person.models import Persons, Patient, Employee, Doctors
+from Person.models import Persons, Patient, Employee, Doctors, Nurses
 from hospital.models import Hospital, PatientRoom, SurgeryRoom
 from .forms import addPatient, addNurses, addDoctors, UpdatePatientDetails, UpdateDoctors, UpdateNurses
 # Create your views here.
 
-def addPersons(request):
-	addPerson=Persons.objects.all()
+
 
 def listPatients(request):
 	hospital=get_object_or_404(Hospital, id=1)
@@ -26,9 +25,10 @@ def postPatients(request):
 		form=addPatient()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Patient'})
 
-def UpdatePatientDetail(request):
+def UpdatePatient(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
-	form=UpdatePatientDetails(request.POST)
+	instance=get_object_or_404(Patient, id=id)
+	form=UpdatePatientDetails(request.POST, instance=instance)
 	if form.is_valid():
 		item=form.save(commit=False)
 		item.save()
@@ -37,10 +37,6 @@ def UpdatePatientDetail(request):
 	else:
 		form=UpdatePatientDetails()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Patient'})
-
-
-def addEmployee(request):
-	addEmployees=Persons.objects.all()
 
 
 def listDoctors(request):
@@ -61,14 +57,16 @@ def postDoctors(request):
 	else:
 		form=addDoctors()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Doctors'})
-def updateDoc(request):
+
+def updateDoc(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
-	form=UpdateDoctors(request.POST)
+	instance=get_object_or_404(Doctors, id=id)
+	form=UpdateDoctors(request.POST, instance=instance)
 	if form.is_valid():
 		item=form.save(commit=False)
 		item.save()
 		hospital.doctors.add(item)
-		return render('hospital:rooms')
+		return redirect('hospital:rooms')
 	else:
 		form=UpdateDoctors()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Doctors'})
@@ -93,9 +91,10 @@ def postNurse(request):
 		form=addNurses()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Nurses'})
 
-def updateNurse(request):
+def updateNurse(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
-	form=UpdateNurses(request.POST)
+	instance=get_object_or_404(Nurses, id=id)
+	form=UpdateNurses(request.POST,instance=instance)
 	if form.is_valid():
 		item=form.save(commit=False)
 		item.save()
