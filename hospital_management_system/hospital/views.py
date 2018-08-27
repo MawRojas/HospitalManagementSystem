@@ -6,7 +6,8 @@ from datetime import datetime
 
 # Create your views here.
 def home(request):
-    return render(request, 'hospital/base.html')
+    hospital = Hospital.objects.filter(id=1)[0]
+    return render(request, 'hospital/home.html', {'hospital': hospital})
 
 
 def rooms_list(request):
@@ -16,6 +17,16 @@ def rooms_list(request):
     print(patient_rooms)
     return render(request, 'hospital/list_all_rooms.html',
                   {'surgery_rooms': surgery_rooms, 'patient_rooms': patient_rooms})
+
+
+def patient_room_details(request, id):
+    instance = get_object_or_404(PatientRoom, id=id)
+    return render(request, 'hospital/room_details.html', {'room': instance})
+
+
+def surgery_room_details(request, id):
+    instance = get_object_or_404(SurgeryRoom, id=id)
+    return render(request, 'hospital/room_details.html', {'room': instance})
 
 
 def post_hospital(request):

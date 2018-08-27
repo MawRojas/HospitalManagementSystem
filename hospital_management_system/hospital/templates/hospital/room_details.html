@@ -1,0 +1,9 @@
+{% extends "hospital/base.html" %}
+
+{% block content %}
+    <h2>Room Details</h2>
+    <p>Room Number: {{ room.room_number }}</p>
+    {% if not room.price is None %}
+        <p>Price: {{ room.price }}</p>
+    {% endif %}
+{% endblock %}

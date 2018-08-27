@@ -21,7 +21,7 @@
                 {% else %}
                     <td>Starting Soon</td>
                 {% endif %}
-                    <td><a href="">Click for details</a> </td>
+                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Click for details</a> </td>
                 </tr>
             {% endfor %}
             </table>
@@ -37,7 +37,7 @@
             {% for sr in free%}
                 <tr>
                     <td>{{sr.room_number}}</td>
-                    <td><a href="">Click for details</a> </td>
+                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Click for details</a> </td>
                 </tr>
             {% endfor %}
             </table>
