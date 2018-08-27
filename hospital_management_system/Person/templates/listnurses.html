@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {%for dr in nurseList%} 
+    {%for nr in nurseList%} 
         <h2 class="Nurse  List">Nurse List</h2>
         <div class="container_nurse"> 
-            <p>Nurse {{dr.firstName}} {{dr.lastName}}</p>
+            <p>Nurse {{nr.firstName}} {{nr.lastName}}</p>
         </div>
     {%endfor%}
 {% endblock %}
