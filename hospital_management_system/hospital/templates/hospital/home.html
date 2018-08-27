@@ -4,7 +4,7 @@
     <div class="container_header">
         {% if hospital is not None %}
             <div class="container_hospital_info">
-                <div class="hospital_title"><a href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+                <div class="hospital_title"><a class="hospital_title_text" href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
                 <div class="hospital_info">
                     <div>{{ hospital.address }}</div>
                     <div class="padding"></div>
@@ -18,7 +18,7 @@
         <div class="container_user_info">
             {% if user.is_authenticated %}
                 <div class="user_name_info">Hello, {{user.username}}</div>
-                <div class="log_out"><a href="{% url 'accounts:logout' %}">Log out</a></div>
+                <div><a class="log_out" href="{% url 'accounts:logout' %}">Log out</a></div>
             {% else %}
                 <a href="{% url 'accounts:login' %}">Log in</a>
             {% endif %}
