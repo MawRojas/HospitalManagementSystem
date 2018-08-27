@@ -23,9 +23,9 @@ def add_new_surgery_details(request):
             post.author = request.user
             post.save()
             return render(request, 'surgery_details/surgery_details.html', {'sur': post})
-        else:
-            form = PostSurgeryDetailsForm()
-            return render(request, 'surgery_details/add_new_surgery_details.html', {'form': form})
+    else:
+        form = PostSurgeryDetailsForm()
+    return render(request, 'surgery_details/add_new_surgery_details.html', {'form': form})
 
 
 def add_new_equipment(request):
@@ -36,6 +36,6 @@ def add_new_equipment(request):
             post.author = request.user
             post.save()
             return render(request, 'surgery_details/equipment_details.html', {'sur': post})
-        else:
-            form = AddNewEquipmentForm()
-            return render(request, 'surgery_details/add_new_equipment.html', {'form': form})
+    else:
+        form = AddNewEquipmentForm()
+    return render(request, 'surgery_details/add_new_equipment.html', {'form': form})

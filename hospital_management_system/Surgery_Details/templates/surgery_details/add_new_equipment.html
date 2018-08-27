@@ -1,22 +1,9 @@
 <html>
     <head>
-        <title>New Bill</title>
+        <title>New Equipment</title>
     </head>
     <body>
 		<form method = "post" class = "AddNewEquipmentForm">
-		{% csrf_token %}
-		{{form.as_p}}
-		<button type="Submit">Save</button>
-		</form>
-    </body>
-</html>
-
-<html>
-    <head>
-        <title>New Surgery Details</title>
-    </head>
-    <body>
-		<form method = "post" class = "PostSurgeryDetailsForm">
 		{% csrf_token %}
 		{{form.as_p}}
 		<button type="Submit">Save</button>

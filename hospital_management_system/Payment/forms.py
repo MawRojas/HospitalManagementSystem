@@ -8,7 +8,7 @@ class AddNewPrescriptionForm(forms.ModelForm):
         fields = ('pres_name', 'pres_description', 'pres_price')
 
 
-class PostBill(forms.ModelForm):
+class PostBillForm(forms.ModelForm):
     class Meta:
         model = Bill
         fields = ('patient_id', 'surgery_id', 'total')
