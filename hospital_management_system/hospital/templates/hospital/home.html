@@ -1,10 +1,31 @@
 {% extends "hospital/base.html" %}
-<style>
-    body {
-    background-image: url("hospital.jpeg");
-    
-}
-</style>
+
+{% block header %}
+    <div class="container_header">
+        {% if hospital is not None %}
+            <div class="container_hospital_info">
+                <div class="hospital_title"><a href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+                <div class="hospital_info">
+                    <div>{{ hospital.address }}</div>
+                    <div class="padding"></div>
+                    <div>{{ hospital.phone_number }}</div>
+                </div>
+            </div>
+        {% else %}
+            <a href="/" class="logo">My Hospital</a>
+        {% endif %}
+
+        <div class="container_user_info">
+            {% if user.is_authenticated %}
+                <div class="user_name_info">Hello, {{user.username}}</div>
+                <div class="log_out"><a href="{% url 'accounts:logout' %}">Log out</a></div>
+            {% else %}
+                <a href="{% url 'accounts:login' %}">Log in</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="menu_items">
         {% if not hospital is None %}
