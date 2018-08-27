@@ -20,7 +20,7 @@ def postPatients(request):
 	if form.is_valid():
 		item=form.save(commit=False)
 		item.save()
-		hospital.patient_rooms.add(item)
+		hospital.patients.add(item)
 		return redirect('hospital:rooms')
 	else:
 		form=addPatient()
@@ -34,7 +34,7 @@ def addEmployee(request):
 
 
 def postDoctors(request):	
-	instance=get_object_or_404(Doctors, id=1)
+	hospital=get_object_or_404(Hospital, id=1)
 	form=addDoctors(request.POST)
 	if form.is_valid():
 		item=form.save(commit=False)
@@ -46,13 +46,13 @@ def postDoctors(request):
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Doctors'})
 		
 def postNurse(request):
-	hospital=get_object_or_404(Nurses, id =1)
+	hospital=get_object_or_404(Hospital, id =1)
 	form=addNurses(request.POST)
 	if form.is_valid():
 		item=form.save(commit=False)
 		item.save()
 		hospital.nurses.add(item)
-		return render('Employee:Doctor')
+		return redirect('hospital:rooms')
 	else:
 		form=addNurses()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Nurses'})
