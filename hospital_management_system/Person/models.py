@@ -6,11 +6,15 @@ from decimal import Decimal
 # Create your models here.
 
 class Persons(models.Model):
+
     firstName = models.CharField(max_length=200)
     lastName = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     phoneNumber = models.CharField(max_length=200)
     social = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.firstName+ " "+ self.lastName
 
     class Meta:
         abstract = True
