@@ -17,16 +17,16 @@ class addDoctors(forms.ModelForm):
         fields=['firstName', 'lastName','address','phoneNumber','social']
 
 
-class UpdatePatientDetails:
+class UpdatePatientDetails(forms.ModelForm):
     class Meta:
         model= Patient
-        fields=['Symptoms','Allergies','Medications','Doctor Name']
+        fields=['symptoms','allergies','currentMeds','docName']
 
-class UpdateDoctors:
+class UpdateDoctors(forms.ModelForm):
     class Meta:
         model=Doctors
-        fields=['Shifts', 'Job Description', 'Salary', 'Specialty']
-class UpdateNurses:
+        fields=['shift', 'jobDesc', 'salary', 'specialty']
+class UpdateNurses(forms.ModelForm):
     class Meta:
         model=Nurses
-        fields=['Shifts', 'Job Description', 'Salary'] 
+        fields=['shift', 'jobDesc', 'salary'] 
