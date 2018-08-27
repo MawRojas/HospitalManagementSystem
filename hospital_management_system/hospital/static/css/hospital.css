@@ -18,7 +18,7 @@ tr:nth-child(even) {
     width: 10%;
 }
 
-.table_row_not_available, .table_row_available {
+.table_row_not_available, .table_row_available, .padding {
     width: 5%;
 }
 
@@ -46,4 +46,29 @@ tr:nth-child(even) {
 .row_surgery_status_starting_soon {
     background-color: #936405;
     color: white;
+}
+
+.container_user_info, .hospital_info {
+    display: flex;
+    flex-direction: row;
+}
+
+.container_hospital_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hospital_info {
+    width: 100%;
+    justify-content: center;
+}
+
+.container_header {
+    background-image: url("hospital.jpg"); /* The image used */
+    background-size: 100% 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
