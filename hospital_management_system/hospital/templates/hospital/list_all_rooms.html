@@ -1,32 +1,63 @@
 {% extends "hospital/base.html" %}
 
 {% block content %}
-    {% for sr in surgery_rooms %}
-        <h2 class="title_rooms">Surgery Rooms</h2>
-        <div class="container_room">
-            <p>Room Number: {{sr.room_number}}</p>
-            {% if not sr.is_occupied %}
-                <p>Room is empty</p>
-                <a href="{% url 'hospital:book_surgery' sr.id %}">Book Surgery</a>
-            {% else %}
-                <p>Doctor: {{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</p>
-                <p>Patient: {{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</p>
-                <a href="{% url 'hospital:check_out_surgery' sr.id %}">Check out surgery room</a>
-            {% endif %}
-        </div>
-    {% endfor %}
-    {% for room in patient_rooms %}
-        <h2 class="title_rooms">Patient Rooms</h2>
-        <div class="container_room">
-            <p>Room Number: {{room.room_number}}</p>
-            {% if not room.is_occupied %}
-                <p>Room is empty</p>
-                <a href="{% url 'hospital:patient_check_in' room.id %}">Check patient in</a>
-            {% else %}
-                <p>Patient: {{room.patient.lastName}}, {{room.patient.firstName}}</p>
-                <p> Nurse: {{room.nurse.lastName}}, {{room.nurse.firstName}}</p>
-                <a href="{% url 'hospital:patient_check_out' room.id %}">Check out patient room</a>
-            {% endif %}
-        </div>
-    {% endfor %}
+    <h2 class="title_rooms">Surgery Rooms</h2>
+        <table>
+            <tr>
+                <th class="room_number_table_header">Room Number</th>
+                <th class="patient_name_table_header">Patient</th>
+                <th>Doctor</th>
+                <th class="check_inout_table_header">Book/Checkout</th>
+                <th class="room_details_table_header">Details</th>
+                <th>Available</th>
+            </tr>
+        {% for sr in surgery_rooms %}
+            <tr class="table_surgery_room">
+                <td>{{sr.room_number}}</td>
+                {% if not sr.is_occupied %}
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td><a href="{% url 'hospital:book_surgery' sr.id %}">Book Surgery</a></td>
+                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Details</a></td>
+                    <td class="table_row_available"></td>
+                {% else %}
+                    <td>{{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</td>
+                    <td>{{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</td>
+                    <td><a href="{% url 'hospital:check_out_surgery' sr.id %}">Check out</a></td>
+                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Details</a></td>
+                    <td class="table_row_not_available"></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+
+    <h2 class="title_rooms">Patient Rooms</h2>
+        <table>
+            <tr>
+                <th class="room_number_table_header">Room Number</th>
+                <th class="patient_name_table_header">Patient</th>
+                <th>Nurse</th>
+                <th class="check_inout_table_header">CheckIn/Out</th>
+                <th class="room_details_table_header">Details</th>
+                <th>Available</th>
+            </tr>
+        {% for room in patient_rooms %}
+            <tr class="table_surgery_room">
+                <td>{{room.room_number}}</td>
+                {% if not room.is_occupied %}
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td><a href="{% url 'hospital:patient_check_in' room.id %}">Check patient in</a></td>
+                    <td><a href="{% url 'hospital:rooms_patient_details' room.id %}">Details</a></td>
+                    <td class="table_row_available"></td>
+                {% else %}
+                    <td>{{room.patient.lastName}}, {{room.patient.firstName}}</td>
+                    <td>{{room.nurse.lastName}}, {{room.nurse.firstName}}</td>
+                    <td><a href="{% url 'hospital:patient_check_out' room.id %}">Check patient out</a></td>
+                    <td><a href="{% url 'hospital:rooms_patient_details' room.id %}">Details</a></td>
+                    <td class="table_row_not_available"></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
 {% endblock %}
