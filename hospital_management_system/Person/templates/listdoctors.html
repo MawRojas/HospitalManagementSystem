@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
+{% block header %}
+<a href="/" class="logo">My Hospital</a>
+{% if user.is_authenticated %}
+    <p>Hello, {{user.username}}</p>
+    <a href="{% url 'accounts:logout' %}">Log out</a>
+{% else %}
+    <a href="{% url 'accounts:login' %}">Log in</a>
+{% endif %}
+{% endblock %}
+
+
 {% block content %}
-    {%for dr in docList%} 
-        <h2 class="Doctor List">Doctor List</h2>
-        <div class="container_doctor"> 
-            <p>Dr.{{dr.firstName}} {{dr.lastName}}</p>
-           
-        </div>
-    {%endfor%}
+    <div class="container_doctor">     
+    <h2 class="Doctor List">Doctor List</h2>
+        <table>
+            <tr>
+                <th class="doctorname_table_header">Our Doctors</th>
+            </tr>
+        {%for dr in docList%} 
+            <tr class="table_row_doctor">
+                <td>Dr.{{dr.firstName}} {{dr.lastName}}</td>
+            </tr>
+        {%endfor%}
+        </table>
+    </div>
 {% endblock %}

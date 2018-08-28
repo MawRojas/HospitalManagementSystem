@@ -33,12 +33,12 @@
                 <h2 class="title_main_menu">Welcome to {{ hospital.name }}</h2>
                 <div class="home_list_container">
                     <div class="home_list_item_container">
-                        <div class="home_list_item"><a class="home_list_item_text" href="">Patient Registration</a></div>
+                        <div class="home_list_item"><a class="home_list_item_text" href="{%url 'person:patient_details' %}">Patient Registration</a></div>
                         <div class="home_list_item_image" id="home_list_item_registration"></div>
                     </div>
 
                     <div class="home_list_item_container">
-                        <div class="home_list_item"><a class="home_list_item_text" href="">Our Staff</a></div>
+                        <div class="home_list_item"><a class="home_list_item_text" href="{%url 'person:staff_list' %}">Our Staff</a></div>
                         <div class="home_list_item_image" id="home_list_item_staff"></div>
                     </div>
 
@@ -56,15 +56,7 @@
                         <div class="home_list_item"><a class="home_list_item_text" href="">Billing</a></div>
                         <div class="home_list_item_image" id="home_list_item_bill"></div>
                     </div>
-                    {% if user.is_authenticated %}
-                        <div class="home_list_item_container">
-                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_patient_room' %}">Create a Patient Room</a></div>
-                        </div>
-
-                        <div class="home_list_item_container">
-                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></div>
-                        </div>
-                    {% endif %}
+                    
                 </div>
             </div>
         {% else %}

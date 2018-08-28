@@ -1,0 +1,30 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.table_row_nurse:hover, .table_row_doctor:hover, .table_row_patient:hover{
+    background-color: lightblue;
+}
+
+td, th {    
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.doctor_name_table_header, .nurse_name_table_header{
+    width: 10%;
+}
+
+.container_doctor, .container_nurse{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
