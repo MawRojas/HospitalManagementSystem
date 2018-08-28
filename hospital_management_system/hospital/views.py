@@ -18,7 +18,7 @@ def rooms_list(request):
     patient_rooms = hospital.patient_rooms.all()
     surgery_rooms = hospital.surgery_rooms.all()
     return render(request, 'hospital/list_all_rooms.html',
-                  {'surgery_rooms': surgery_rooms, 'patient_rooms': patient_rooms})
+                  {'surgery_rooms': surgery_rooms, 'patient_rooms': patient_rooms, 'hospital': hospital})
 
 
 def patient_room_details(request, id):
@@ -121,7 +121,8 @@ def display_surgery_schedule(request):
     surgery_rooms_free = hospital.surgery_rooms.all().filter(is_occupied='0').order_by('surgery__start_time')
     return render(request, 'hospital\surgery_schedule.html', {'booked': surgery_rooms_booked,
                                                               'free': surgery_rooms_free,
-                                                              'time': datetime_now})
+                                                              'time': datetime_now,
+                                                              'hospital': hospital})
 
 
 
