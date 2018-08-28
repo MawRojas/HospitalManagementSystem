@@ -36,7 +36,11 @@ def UpdatePatient(request, id):
 		return redirect('hospital:rooms')
 	else:
 		form=UpdatePatientDetails()
+<<<<<<< HEAD
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient'})
+=======
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Patient'})
+>>>>>>> Person
 
 
 def listDoctors(request):
@@ -57,6 +61,7 @@ def postDoctors(request):
 	else:
 		form=addDoctors()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors'})
+
 
 def updateDoc(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
@@ -92,6 +97,7 @@ def postNurse(request):
 def updateNurse(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
 	instance=get_object_or_404(Nurses, id=id)	
+
 	form=UpdateNurses(request.POST,instance=instance)
 	if form.is_valid():
 		item=form.save(commit=False)

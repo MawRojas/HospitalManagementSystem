@@ -12,6 +12,7 @@
 
 
 {% block content %}
+<<<<<<< HEAD
     <div class="container_nurse"> 
         <h2 class="Nurse  List">Nurse List</h2>
         <table>
@@ -25,4 +26,12 @@
             {%endfor%}
         </table>    
     </div>
+=======
+    {%for nr in nurseList%} 
+        <h2 class="Nurse  List">Nurse List</h2>
+        <div class="container_nurse"> 
+            <p>Nurse {{nr.firstName}} {{nr.lastName}}</p>
+        </div>
+    {%endfor%}
+>>>>>>> Person
 {% endblock %}
