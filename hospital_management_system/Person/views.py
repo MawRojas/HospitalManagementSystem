@@ -93,7 +93,7 @@ def postNurse(request):
 
 def updateNurse(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
-	instance=get_object_or_404(Nurses, id=id)
+	instance=get_object_or_404(Nurses, id=id)	
 	form=UpdateNurses(request.POST,instance=instance)
 	if form.is_valid():
 		item=form.save(commit=False)
