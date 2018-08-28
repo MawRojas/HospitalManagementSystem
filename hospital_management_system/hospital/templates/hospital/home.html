@@ -63,6 +63,12 @@
                         <div class="home_list_item_container">
                             <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></div>
                         </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'person:doctor_details' %}">Add Doctor</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'person:nurse_details' %}">Add Nurse</a></div>
+                        </div>
                     </div>
                 {% else %}
                 <div class="home_list_container">
