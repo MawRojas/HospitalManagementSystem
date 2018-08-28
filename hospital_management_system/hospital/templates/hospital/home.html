@@ -31,9 +31,33 @@
         {% if not hospital is None %}
             <div class="container_main_menu">
                 <h2 class="title_main_menu">Welcome to {{ hospital.name }}</h2>
-                <p>Select one option</p>
-                <ul>
+                <div class="home_list_container">
+                    <div class="home_list_item_container">
+                        <div class="home_list_item"><a class="home_list_item_text" href="">Patient Registration</a></div>
+                        <div class="home_list_item_image" id="home_list_item_registration"></div>
+                    </div>
+
+                    <div class="home_list_item_container">
+                        <div class="home_list_item"><a class="home_list_item_text" href="">Our Staff</a></div>
+                        <div class="home_list_item_image" id="home_list_item_staff"></div>
+                    </div>
+
+                    <div class="home_list_item_container">
+                        <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:surgery_schedule' %}">Surgeries Schedule</a></div>
+                        <div class="home_list_item_image" id="home_list_item_surgery"></div>
+                    </div>
+
+                    <div class="home_list_item_container">
+                        <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:rooms' %}">Rooms</a></div>
+                        <div class="home_list_item_image" id="home_list_item_rooms"></div>
+                    </div>
+
+                    <div class="home_list_item_container">
+                        <div class="home_list_item"><a class="home_list_item_text" href="">Billing</a></div>
+                        <div class="home_list_item_image" id="home_list_item_bill"></div>
+                    </div>
                     {% if user.is_authenticated %}
+<<<<<<< HEAD
                         <li><a href="{%url 'person:patient_details' %}">Patient Registration</a></li>
                         <li><a href="{%url 'person:staff_list' %}">Our Staff</a></li>
                         <li><a href="{% url 'hospital:surgery_schedule' %}">Surgery Schedule</a></li>
@@ -47,8 +71,17 @@
                         <li><a href="{% url 'hospital:surgery_schedule' %}">Surgery Schedule</a></li>
                         <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
                         <li><a href="">Billing</a></li>
+=======
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_patient_room' %}">Create a Patient Room</a></div>
+                        </div>
+
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></div>
+                        </div>
+>>>>>>> e1f1eb6fa5b1929d5ffc08fb061c3cf0ac85c4ae
                     {% endif %}
-                </ul>
+                </div>
             </div>
         {% else %}
             <p>Your hospital has not been created yet</p>
