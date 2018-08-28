@@ -51,6 +51,7 @@ tr:nth-child(even) {
 .container_user_info, .hospital_info {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .container_hospital_info {
@@ -71,4 +72,23 @@ tr:nth-child(even) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.hospital_title_text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 3.5em;
+    text-decoration: none;
+    color: #6e11ad;
+}
+
+.hospital_info, .container_user_info {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+}
+
+.log_out {
+    color: #150335;
+    text-decoration: none;
 }
