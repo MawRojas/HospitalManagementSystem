@@ -10,7 +10,7 @@ def listPatients(request):
 	hospital=get_object_or_404(Hospital, id=1)
 	patientList=hospital.patients.all()
 	print(patientList)
-	return render(request, 'listpatients.html', {'patientList':patientList})
+	return render(request, 'listpatients.html', {'patientList':patientList, 'hospital':hospital})
 
 
 def postPatients(request):
@@ -23,7 +23,7 @@ def postPatients(request):
 		return redirect('hospital:rooms')
 	else:
 		form=addPatient()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient', 'hospital':hospital})
 
 def UpdatePatient(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
@@ -33,10 +33,10 @@ def UpdatePatient(request, id):
 		item=form.save(commit=False)
 		item.save()
 		hospital.patients.add(item)
-		return redirect('hospital:rooms')
+		return redirect('hospital:home')
 	else:
 		form=UpdatePatientDetails()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient', 'hospital':hospital})
 
 
 
@@ -44,7 +44,7 @@ def listDoctors(request):
 	hospital=get_object_or_404(Hospital, id=1)
 	docList=hospital.doctors.all()
 	print(docList)
-	return render(request, 'listdoctors.html', {'docList':docList})
+	return render(request, 'listdoctors.html', {'docList':docList, 'hospital':hospital})
  
 
 def postDoctors(request):	
@@ -54,10 +54,10 @@ def postDoctors(request):
 		item=form.save(commit=False)
 		item.save()
 		hospital.doctors.add(item)
-		return redirect('hospital:rooms')
+		return redirect('hospital:home')
 	else:
 		form=addDoctors()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors', 'hospital':hospital})
 
 
 def updateDoc(request, id):
@@ -68,17 +68,17 @@ def updateDoc(request, id):
 		item=form.save(commit=False)
 		item.save()
 		hospital.doctors.add(item)
-		return redirect('hospital:rooms')
+		return redirect('person:staff_list')
 	else:
 		form=UpdateDoctors()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors', 'hospital':hospital})
 
 
 def listNurses(request):
 	hospital=get_object_or_404(Hospital, id=1)
 	nurseList=hospital.nurses.all()
 	print(nurseList)
-	return render(request, 'listnurses.html', {'nurseList':nurseList})
+	return render(request, 'listnurses.html', {'nurseList':nurseList, 'hospital':hospital})
 def postNurse(request):
 	hospital=get_object_or_404(Hospital, id =1)
 	form=addNurses(request.POST)
@@ -86,10 +86,10 @@ def postNurse(request):
 		item=form.save(commit=False)
 		item.save()
 		hospital.nurses.add(item)
-		return redirect('hospital:rooms')
+		return redirect('hospital:home')
 	else:
 		form=addNurses()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Nurses'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Nurses', 'hospital':hospital})
 
 def updateNurse(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
@@ -100,14 +100,15 @@ def updateNurse(request, id):
 		item=form.save(commit=False)
 		item.save()
 		hospital.nurses.add(item)
-		return redirect('hospital:rooms')
+		return redirect('person:staff_list')
 	else:
 		form=UpdateNurses()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Nurses'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Nurses', 'hospital':hospital})
+
 def listStaff(request):
 	hospital=get_object_or_404(Hospital, id=1)
 	nursesList=hospital.nurses.all()
 	doctorsList=hospital.doctors.all()
 	print(doctorsList)
 	print(nursesList)
-	return render(request, 'Staff.html',{'doctorsList':doctorsList, 'nursesList':nursesList})
+	return render(request, 'Staff.html',{'doctorsList':doctorsList, 'nursesList':nursesList, 'hospital':hospital})
