@@ -1,13 +1,29 @@
 {% extends "base.html" %}
 
 {% block header %}
-<a href="/" class="logo">My Hospital</a>
-{% if user.is_authenticated %}
-    <p>Hello, {{user.username}}</p>
-    <a href="{% url 'accounts:logout' %}">Log out</a>
-{% else %}
-    <a href="{% url 'accounts:login' %}">Log in</a>
-{% endif %}
+<div class="container_header">
+    {% if hospital is not None %}
+        <div class="container_hospital_info">
+            <div class="hospital_title"><a class="hospital_title_text" href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+            <div class="hospital_info">
+                <div>{{ hospital.address }}</div>
+                <div class="padding"></div>
+                <div>{{ hospital.phone_number }}</div>
+            </div>
+        </div>
+    {% else %}
+        <a href="/" class="logo">My Hospital</a>
+    {% endif %}
+
+    <div class="container_user_info">
+        {% if user.is_authenticated %}
+            <div class="user_name_info">Hello, {{user.username}}</div>
+            <div><a class="log_out" href="{% url 'accounts:logout' %}">Log out</a></div>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Log in</a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
 
 
