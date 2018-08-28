@@ -20,7 +20,7 @@ def postPatients(request):
 		item=form.save(commit=False)
 		item.save()
 		hospital.patients.add(item)
-		return redirect('hospital:rooms')
+		return redirect('hospital:home')
 	else:
 		form=addPatient()
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient', 'hospital':hospital})
