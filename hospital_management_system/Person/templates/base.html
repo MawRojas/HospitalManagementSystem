@@ -1,18 +1,15 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hospital</title>
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="{% static 'css/hospital.css' %}">
 </head>
 <body>
     <div id="header">
-        <a href="/" class="logo">My Hospital</a>
-        {% if user.is_authenticated %}
-            <p>Hello, {{user.username}}</p>
-            <a href="{% url 'accounts:logout' %}">Log out</a>
-        {% else %}
-            <a href="{% url 'accounts:login' %}">Log in</a>
-        {% endif %}
+        {% block header %}
+        {% endblock %}
     </div>
     <div id="content">
         {% block content %}

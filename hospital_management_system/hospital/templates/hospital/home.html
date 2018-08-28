@@ -34,17 +34,17 @@
                 <p>Select one option</p>
                 <ul>
                     {% if user.is_authenticated %}
-                        <li><a href="">Patient Registration</a></li>
-                        <li><a href="">Our Staff</a></li>
-                        <li><a href="{% url 'hospital:surgery_schedule' %}">Surgeries Schedule</a></li>
+                        <li><a href="{%url 'person:patient_details' %}">Patient Registration</a></li>
+                        <li><a href="{%url 'person:staff_list' %}">Our Staff</a></li>
+                        <li><a href="{% url 'hospital:surgery_schedule' %}">Surgery Schedule</a></li>
                         <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
                         <li><a href="">Billing</a></li>
-                        <li><a href="{% url 'hospital:post_patient_room' %}">Create a Patient Room</a></li>
-                        <li><a href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></li>
+                        <li><a href="{% url 'hospital:post_patient_room' %}">Book a Patient Room</a></li>
+                        <li><a href="{% url 'hospital:post_surgery_room' %}">Book a Surgery Room</a></li>
                     {% else %}
-                        <li><a href="">Patient Registration</a></li>
-                        <li><a href="">Our Staff</a></li>
-                        <li><a href="{% url 'hospital:surgery_schedule' %}">Surgeries Schedule</a></li>
+                        <li><a href="{%url 'person:patient_details' %}">Patient Registration</a></li>
+                        <li><a href="{%url 'person:staff_list' %}">Our Staff</a></li>
+                        <li><a href="{% url 'hospital:surgery_schedule' %}">Surgery Schedule</a></li>
                         <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
                         <li><a href="">Billing</a></li>
                     {% endif %}

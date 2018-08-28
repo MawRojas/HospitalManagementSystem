@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block header %}
+<a href="/" class="logo">My Hospital</a>
+{% if user.is_authenticated %}
+    <p>Hello, {{user.username}}</p>
+    <a href="{% url 'accounts:logout' %}">Log out</a>
+{% else %}
+    <a href="{% url 'accounts:login' %}">Log in</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="container_doctor"> 
+        <h2 class="Doctor List">Doctor List</h2>
+        <table>
+            <tr>
+                <th class="doctor_name_table_header">Doctor Name</th>
+                <th class="doctor_specialty_table_header">Specialty</th>
+            </tr>
+        
+    
+        {%for dr in doctorsList%} 
+            <tr class="table_row_doctor">
+                <td>Dr.{{dr.firstName}} {{dr.lastName}} </td>
+                <td>{{dr.specialty}}</td>
+                
+            </tr>
+        {%endfor%}
+        </table>
+    </div>
+
+    <div class="container_nurse"></div>
+        <h2 class="Nurse  List">Nurse List</h2>
+        
+        <table>
+            <tr>
+                <th class="nurse_name_table_header">Nurse Name</th>
+                <th class="nurse_shift_table_header">Shift</th>
+            </tr>
+                
+        {%for nr in nursesList%} 
+                <tr class="table_row_nurse">
+                    <td>{{nr.firstName}} {{nr.lastName}}</td>
+                    <td>{{nr.shift}}</td>
+                </tr>
+        {%endfor%}
+        </table>
+    </div>
+{% endblock %}
