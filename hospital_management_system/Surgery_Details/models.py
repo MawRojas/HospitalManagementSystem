@@ -13,8 +13,14 @@ class Surgery(models.Model):
     nurse_incharge = models.ForeignKey(Nurses, null=True, related_name = 'surgery', on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, null=True, related_name = 'surgery', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.surgery_description
+
 
 class Equipment(models.Model):
     equip_name = models.CharField(max_length=200)
     equip_description = models.TextField()
     equip_price = models.FloatField()
+
+    def __str__(self):
+        return self.equip_name
