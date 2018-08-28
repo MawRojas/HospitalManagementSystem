@@ -36,11 +36,8 @@ def UpdatePatient(request, id):
 		return redirect('hospital:rooms')
 	else:
 		form=UpdatePatientDetails()
-<<<<<<< HEAD
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient'})
-=======
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Patient'})
->>>>>>> Person
+
 
 
 def listDoctors(request):

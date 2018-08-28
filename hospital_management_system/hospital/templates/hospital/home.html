@@ -57,7 +57,6 @@
                         <div class="home_list_item_image" id="home_list_item_bill"></div>
                     </div>
                     {% if user.is_authenticated %}
-<<<<<<< HEAD
                         <li><a href="{%url 'person:patient_details' %}">Patient Registration</a></li>
                         <li><a href="{%url 'person:staff_list' %}">Our Staff</a></li>
                         <li><a href="{% url 'hospital:surgery_schedule' %}">Surgery Schedule</a></li>
@@ -71,7 +70,6 @@
                         <li><a href="{% url 'hospital:surgery_schedule' %}">Surgery Schedule</a></li>
                         <li><a href="{% url 'hospital:rooms' %}">Rooms</a></li>
                         <li><a href="">Billing</a></li>
-=======
                         <div class="home_list_item_container">
                             <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_patient_room' %}">Create a Patient Room</a></div>
                         </div>
@@ -79,7 +77,6 @@
                         <div class="home_list_item_container">
                             <div class="home_list_item"><a class="home_list_item_text" href="{% url 'hospital:post_surgery_room' %}">Create a Surgery Room</a></div>
                         </div>
->>>>>>> e1f1eb6fa5b1929d5ffc08fb061c3cf0ac85c4ae
                     {% endif %}
                 </div>
             </div>
