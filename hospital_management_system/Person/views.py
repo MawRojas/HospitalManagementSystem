@@ -23,7 +23,7 @@ def postPatients(request):
 		return redirect('hospital:rooms')
 	else:
 		form=addPatient()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Patient'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient'})
 
 def UpdatePatient(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
@@ -36,7 +36,11 @@ def UpdatePatient(request, id):
 		return redirect('hospital:rooms')
 	else:
 		form=UpdatePatientDetails()
+<<<<<<< HEAD
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Patient'})
+=======
 		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Patient'})
+>>>>>>> Person
 
 
 def listDoctors(request):
@@ -56,7 +60,8 @@ def postDoctors(request):
 		return redirect('hospital:rooms')
 	else:
 		form=addDoctors()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Doctors'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors'})
+
 
 def updateDoc(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
@@ -69,7 +74,7 @@ def updateDoc(request, id):
 		return redirect('hospital:rooms')
 	else:
 		form=UpdateDoctors()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Doctors'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Doctors'})
 
 
 def listNurses(request):
@@ -77,8 +82,6 @@ def listNurses(request):
 	nurseList=hospital.nurses.all()
 	print(nurseList)
 	return render(request, 'listnurses.html', {'nurseList':nurseList})
-
-
 def postNurse(request):
 	hospital=get_object_or_404(Hospital, id =1)
 	form=addNurses(request.POST)
@@ -89,11 +92,12 @@ def postNurse(request):
 		return redirect('hospital:rooms')
 	else:
 		form=addNurses()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Nurses'})
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Nurses'})
 
 def updateNurse(request, id):
 	hospital=get_object_or_404(Hospital, id=1)
-	instance=get_object_or_404(Nurses, id=id)
+	instance=get_object_or_404(Nurses, id=id)	
+
 	form=UpdateNurses(request.POST,instance=instance)
 	if form.is_valid():
 		item=form.save(commit=False)
@@ -102,13 +106,11 @@ def updateNurse(request, id):
 		return redirect('hospital:rooms')
 	else:
 		form=UpdateNurses()
-		return render(request, 'post_element.html', {'form':form, 'button_title':'Post Nurses'})
-
-
-
-
-
-
-
-
-		
+		return render(request, 'post_element.html', {'form':form, 'button_title':'Add Nurses'})
+def listStaff(request):
+	hospital=get_object_or_404(Hospital, id=1)
+	nursesList=hospital.nurses.all()
+	doctorsList=hospital.doctors.all()
+	print(doctorsList)
+	print(nursesList)
+	return render(request, 'Staff.html',{'doctorsList':doctorsList, 'nursesList':nursesList})

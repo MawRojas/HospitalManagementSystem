@@ -1,12 +1,36 @@
 {% extends "base.html" %}
 
-{% block content %}
-    {%for pr in patientList%} 
+{% block header %}
+<a href="/" class="logo">My Hospital</a>
+{% if user.is_authenticated %}
+    <p>Hello, {{user.username}}</p>
+    <a href="{% url 'accounts:logout' %}">Log out</a>
+{% else %}
+    <a href="{% url 'accounts:login' %}">Log in</a>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}    
+    <div class="container_patient"> 
         <h2 class="Patient List">Patient List</h2>
-        <div class="container_patient"> 
-            <p>Patient Name:{{pr.lastName}}, {{pr.firstName}}</p>
-    
-        </div>
-    {%endfor%}
+        <table>
+            <tr>
+                <th class="patient_name_table_header">Patient Name</th>
+                <th class="patient_symptoms_table_header">Symptoms</th>
+                <th class="patient_currentMeds_table_header">Current Medications</th>
+                <th class="patient_docName_table_header">Patient Doctor</th>
+            </tr>
+            {%for pr in patientList%} 
+                <tr class="table_row_patient">
+                    <td>{{pr.lastName}}, {{pr.firstName}}</td>
+                    <td>{{pr.symptoms}}</td>
+                    <td>{{pr.docName}}</td>
+                    <td>{{pr.currentMeds}}</td>
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+
 
 {% endblock %}

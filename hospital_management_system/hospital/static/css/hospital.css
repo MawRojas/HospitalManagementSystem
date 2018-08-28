@@ -51,6 +51,7 @@ tr:nth-child(even) {
 .container_user_info, .hospital_info {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .container_hospital_info {
@@ -71,4 +72,98 @@ tr:nth-child(even) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.hospital_title_text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 3.5em;
+    text-decoration: none;
+    color: #6e11ad;
+}
+
+.hospital_info, .container_user_info {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+}
+
+.log_out {
+    color: #150335;
+    text-decoration: none;
+}
+
+ul.home_list {
+    list-style: none;
+}
+
+.home_list_item_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 15px solid #79e2f2;
+    padding: 15px;
+    margin: 15px;
+    background-color: white;
+}
+
+.home_list_item_image {
+    width: 150px;
+    height: 150px;
+}
+
+.home_list_item_image {
+    width: 150px;
+    height: 150px;
+}
+
+#home_list_item_registration {
+    background-image: url("../icons/registration.png"); /* The image used */
+    background-size: 100% 100%;
+}
+
+#home_list_item_staff {
+    background-image: url("../icons/staff.png"); /* The image used */
+    background-size: 100% 100%;
+}
+
+#home_list_item_surgery {
+    background-image: url("../icons/surgery.png"); /* The image used */
+    background-size: 100% 100%;
+}
+
+#home_list_item_rooms {
+    background-image: url("../icons/room.png"); /* The image used */
+    background-size: 100% 100%;
+}
+
+#home_list_item_bill {
+    background-image: url("../icons/billing.png"); /* The image used */
+    background-size: 100% 100%;
+}
+
+.home_list_item_text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2em;
+    text-decoration: none;
+    color: black;
+}
+
+.home_list_item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+}
+
+.container_main_menu {
+    background-color: lightgray;
+}
+
+.title_main_menu {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 3em;
+    text-decoration: none;
+    text-align: center;
 }
