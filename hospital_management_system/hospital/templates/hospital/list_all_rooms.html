@@ -47,8 +47,8 @@
                     <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Details</a></td>
                     <td class="table_row_available"></td>
                 {% else %}
-                    <td>{{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</td>
                     <td>{{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</td>
+                    <td>{{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</td>
                     <td><a href="{% url 'hospital:check_out_surgery' sr.id %}">Check out</a></td>
                     <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Details</a></td>
                     <td class="table_row_not_available"></td>
