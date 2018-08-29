@@ -1,12 +1,9 @@
-<html>
-    <head>
-        <title>New Equipment</title>
-    </head>
-    <body>
-		<form method = "post" class = "AddNewEquipmentForm">
+{% extends "base.html" %}
+
+{% block content %}
+    <form method = "post" class = "AddNewEquipmentForm">
 		{% csrf_token %}
 		{{form.as_p}}
 		<button type="Submit">Save</button>
-		</form>
-    </body>
-</html>
+    </form>
+{% endblock %}

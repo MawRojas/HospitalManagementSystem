@@ -1,14 +1,56 @@
-<html>
-    <head>
-        <title>Bill Details</title>
-    </head>
-    <body>
-		{% for b in bill %}
-			<div>
-				<h1><a href="">{{ b.patient_id }}</a></h1>
-                <p>{{b.surgery_id}}</p>
-                <p>{{b.total}}</p>
-			</div>
-		{% endfor %}
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block header %}
+<div class="container_header">
+    {% if hospital is not None %}
+        <div class="container_hospital_info">
+            <div class="hospital_title"><a class="hospital_title_text" href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+            <div class="hospital_info">
+                <div>{{ hospital.address }}</div>
+                <div class="padding"></div>
+                <div>{{ hospital.phone_number }}</div>
+            </div>
+        </div>
+    {% else %}
+        <a href="/" class="logo">My Hospital</a>
+    {% endif %}
+
+    <div class="container_user_info">
+        {% if user.is_authenticated %}
+            <div class="user_name_info">Hello, {{user.username}}</div>
+            <div><a class="log_out" href="{% url 'accounts:logout' %}">Log out</a></div>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Log in</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<h2><a href="">Bill Details</a> </h2>
+<div class="container_bill_details">
+	<table>
+        <tr>
+            <th class="bill_id_header">Bill ID</th>
+            <th class="bill_patient_table_header">Patient ID</th>
+			<th class="bill_surgery_table_header">Surgery ID</th>
+            <th class="bill_patient_room_table_header">Patient Room</th>
+			<th class="bill_prescription_table_header">Prescription</th>
+            <th class="bill_total_table_header">Total</th>
+            <th class="bill_status_table_header">Status</th>
+        </tr>
+
+        {% for b in bill %}
+			<tr class="table_row_bill">
+                <td>{{ b.id }}</td>
+                <td>{{b.patient}}</td>
+				<td>{{ b.surgery.surgery_price }}</td>
+                <td>{{ b.patient_room.price }}</td>
+                <td>{{ b.prescription.pres_price }}</td>
+                <td>{{b.total}}</td>
+				<td>{{ b.bill_status }}</td>
+            </tr>
+        {% endfor %}
+	</table>
+</div>
+{% endblock %}

@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="home_list_item_container">
-                            <div class="home_list_item"><a class="home_list_item_text" href="">Billing</a></div>
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'person:patient_list' %}">Billing</a></div>
                             <div class="home_list_item_image" id="home_list_item_bill"></div>
                         </div>
                         <div class="home_list_item_container">
@@ -68,6 +68,24 @@
                         </div>
                         <div class="home_list_item_container">
                             <div class="home_list_item"><a class="home_list_item_text" href="{% url 'person:nurse_details' %}">Add Nurse</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'Surgery_Details:New_Equipment' %}">Add Equipment</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'Surgery_Details:New_Surgery' %}">Add Surgery</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'Surgery_Details:Surgery_List' %}">List All Surgery</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'Surgery_Details:Equipment_Details' %}">List All Equipments</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'Payment:Prescription_List' %}">Medicine Stock List</a></div>
+                        </div>
+                        <div class="home_list_item_container">
+                            <div class="home_list_item"><a class="home_list_item_text" href="{% url 'Payment:New_Bill' %}">Generate Bill</a></div>
                         </div>
                     </div>
                 {% else %}
@@ -93,7 +111,7 @@
                     </div>
 
                     <div class="home_list_item_container">
-                        <div class="home_list_item"><a class="home_list_item_text" href="">Billing</a></div>
+                        <div class="home_list_item"><a class="home_list_item_text" href="{% url 'person:patient_list' %}">Billing</a></div>
                         <div class="home_list_item_image" id="home_list_item_bill"></div>
                     </div>
                 </div>

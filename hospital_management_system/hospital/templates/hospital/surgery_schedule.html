@@ -42,7 +42,7 @@
                     <td> {{ sr.room_number }}</td>
                     <td>{{sr.surgery.doctor_incharge.lastName}}, {{sr.surgery.doctor_incharge.firstName}}</td>
                     <td>{{sr.surgery.patient.lastName}}, {{sr.surgery.patient.firstName}}</td>
-                    <td><a href="{% url 'hospital:rooms_surgery_details' sr.id %}">Click for details</a> </td>
+                    <td><a href="{% url 'Surgery_Details:Surgery' sr.id %}">Click for details</a> </td>
                 {% if sr.surgery.start_time >= time %}
                     <td class="row_surgery_status_on_going">On Going</td>
                 {% else %}

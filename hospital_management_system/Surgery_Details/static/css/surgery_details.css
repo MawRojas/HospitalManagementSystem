@@ -1,0 +1,30 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.table_row_equipment:hover, .table_row_surgery:hover{
+    background-color: lightblue;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.equipment_name_table_header, .surgery_name_table_header{
+    width: 10%;
+}
+
+.container_equipment, .container_surgery, .container_equipment_display, .container_surgery_display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

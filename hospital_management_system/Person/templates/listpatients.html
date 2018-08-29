@@ -36,6 +36,7 @@
                 <th class="patient_symptoms_table_header">Symptoms</th>
                 <th class="patient_currentMeds_table_header">Current Medications</th>
                 <th class="patient_docName_table_header">Patient Doctor</th>
+                <th class="patient_bill_details_table_header">Bill</th>
             </tr>
             {%for pr in patientList%} 
                 <tr class="table_row_patient">
@@ -43,6 +44,7 @@
                     <td>{{pr.symptoms}}</td>
                     <td>{{pr.docName}}</td>
                     <td>{{pr.currentMeds}}</td>
+                    <td><a href="{% url 'Payment:Bill_Details_for_Patient' pr.id %}">Click Here</a></td>
                 </tr>
             {%endfor%}
         </table>

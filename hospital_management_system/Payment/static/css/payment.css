@@ -1,0 +1,30 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+.table_row_medicine:hover, .table_row_bill:hover {
+    background-color: lightblue;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.prescription_name_table_header, .nurse_name_table_header, .bill_id_header {
+    width: 10%;
+}
+
+.container_prescription, .container_prescription_display, .container_bill_details, .container_bill_display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

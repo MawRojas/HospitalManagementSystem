@@ -1,11 +1,54 @@
-<html>
-    <head>
-        <title>Bill Details for Patient</title>
-    </head>
-    <body>
-		<div>
-			<h1><a href="">{{ details.total }}</a></h1>
-			<p>{{ details.surgery_id }}</p>
-		</div>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block header %}
+<div class="container_header">
+    {% if hospital is not None %}
+        <div class="container_hospital_info">
+            <div class="hospital_title"><a class="hospital_title_text" href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+            <div class="hospital_info">
+                <div>{{ hospital.address }}</div>
+                <div class="padding"></div>
+                <div>{{ hospital.phone_number }}</div>
+            </div>
+        </div>
+    {% else %}
+        <a href="/" class="logo">My Hospital</a>
+    {% endif %}
+
+    <div class="container_user_info">
+        {% if user.is_authenticated %}
+            <div class="user_name_info">Hello, {{user.username}}</div>
+            <div><a class="log_out" href="{% url 'accounts:logout' %}">Log out</a></div>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Log in</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<h2><a href="">Bill Details</a> </h2>
+<div class="container_bill_display">
+	<table>
+        <tr>
+            <th class="bill_id_header">Bill ID</th>
+            <th class="bill_patient_table_header">Patient ID</th>
+			<th class="bill_surgery_table_header">Surgery ID</th>
+            <th class="bill_patient_room_table_header">Patient Room</th>
+			<th class="bill_prescription_table_header">Prescription</th>
+            <th class="bill_total_table_header">Total</th>
+            <th class="bill_status_table_header">Status</th>
+        </tr>
+
+			<tr class="table_row_bill">
+                <td>{{ bill.id }}</td>
+                <td>{{bill.patient}}</td>
+				<td>{{ bill.surgery }}</td>
+                <td>{{ bill.patient_room }}</td>
+                <td>{{ bill.prescription }}</td>
+                <td>{{bill.total}}</td>
+				<td>{{ bill.bill_status }}</td>
+            </tr>
+	</table>
+</div>
+{% endblock %}

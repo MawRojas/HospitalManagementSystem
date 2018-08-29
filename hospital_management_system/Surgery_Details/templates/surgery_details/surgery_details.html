@@ -1,15 +1,50 @@
-<html>
-    <head>
-        <title>Surgery Details</title>
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block header %}
+<div class="container_header">
+    {% if hospital is not None %}
+        <div class="container_hospital_info">
+            <div class="hospital_title"><a class="hospital_title_text" href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+            <div class="hospital_info">
+                <div>{{ hospital.address }}</div>
+                <div class="padding"></div>
+                <div>{{ hospital.phone_number }}</div>
+            </div>
+        </div>
+    {% else %}
+        <a href="{% url 'hospital:home' %}" class="logo">My Hospital</a>
+    {% endif %}
+
+    <div class="container_user_info">
+        {% if user.is_authenticated %}
+            <div class="user_name_info">Hello, {{user.username}}</div>
+            <div><a class="log_out" href="{% url 'accounts:logout' %}">Log out</a></div>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Log in</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <h1 class="Surgery List"><a href="">Surgery List</a></h1>
+	<div class="container_surgery">
+	<table>
+        <tr>
+            <th class="surgery_description_header">Surgery Description</th>
+            <th class="surgery_price_table_header">Price</th>
+			<th class="surgery_duration_table_header">Duration</th>
+            <th class="surgery_starttime_table_header">Start Time</th>
+        </tr>
+
 		{% for s in sur %}
-			<div>
-				<h1><a href="">{{ s.duration }} mins</a></h1>
-				<p>Price: {{s.surgery_price}}</p>
-				<p>{{s.start_time}}
-				<p>{{ s.surgery_description|linebreaksbr }}</p>
-			</div>
+            <tr class="table_row_surgery">
+                <td>{{ s.surgery_description|linebreaksbr }}</td>
+                <td>{{s.surgery_price}}</td>
+				<td>{{ s.duration }} mins</td>
+                <td>{{s.start_time}}</td>
+            </tr>
 		{% endfor %}
-    </body>
-</html>
+    </table>
+    </div>
+{% endblock %}

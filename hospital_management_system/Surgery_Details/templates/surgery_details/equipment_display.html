@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="container_header">
+    {% if hospital is not None %}
+        <div class="container_hospital_info">
+            <div class="hospital_title"><a class="hospital_title_text" href="{% url 'hospital:home' %}">{{ hospital.name }}</a></div>
+            <div class="hospital_info">
+                <div>{{ hospital.address }}</div>
+                <div class="padding"></div>
+                <div>{{ hospital.phone_number }}</div>
+            </div>
+        </div>
+    {% else %}
+        <a href="/" class="logo">My Hospital</a>
+    {% endif %}
+
+    <div class="container_user_info">
+        {% if user.is_authenticated %}
+            <div class="user_name_info">Hello, {{user.username}}</div>
+            <div><a class="log_out" href="{% url 'accounts:logout' %}">Log out</a></div>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Log in</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container_equipment_display">
+	<table>
+        <tr>
+            <th class="equipment_name_header">Equipment Name</th>
+            <th class="equipment_price_table_header">Price</th>
+			<th class="equipment_description_table_header">Description</th>
+        </tr>
+
+			<tr class="table_row_equipment">
+                <td>{{ equip.equip_name }}</td>
+                <td>{{equip.equip_price}}</td>
+				<td>{{ equip.equip_description|linebreaksbr }}</td>
+            </tr>
+
+	</table>
+	</div>
+{% endblock %}
